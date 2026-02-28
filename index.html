@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Princy ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+background:linear-gradient(135deg,#3b1424,#5a0f2e);
+font-family:Poppins;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+}
+
+.screen{
+display:none;
+width:90%;
+max-width:400px;
+background:white;
+border-radius:20px;
+padding:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+animation:fade 0.5s;
+}
+
+.active{
+display:block;
+}
+
+h1,h2{
+font-family:Dancing Script;
+color:#c9184a;
+margin-bottom:10px;
+}
+
+p{
+margin-bottom:15px;
+color:#444;
+}
+
+.gif{
+width:140px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.photo-container{
+display:flex;
+gap:10px;
+justify-content:center;
+margin-bottom:10px;
+}
+
+.couple-photo{
+width:45%;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:15px;
+border:3px solid pink;
+}
+
+.btn{
+background:#ff4d6d;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:30px;
+margin:6px;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+background:#c9184a;
+}
+
+#music-btn{
+position:fixed;
+bottom:20px;
+left:20px;
+border:none;
+font-size:22px;
+background:#ff4d6d;
+color:white;
+border-radius:50%;
+padding:12px;
+cursor:pointer;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;}
+}
+
+/* floating hearts */
+
+.heart{
+position:fixed;
+color:red;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bg-music" loop>
+<source src="music.mp3">
+</audio>
+
+<button id="music-btn" onclick="toggleMusic()">🎵</button>
+
+<!-- Screen 1 -->
+
+<div id="screen1" class="screen active">
+
+<img src="gif1.gif" class="gif">
+
+<h1>Hi Princy ❤️</h1>
+
+<p>Mujhe tumse kuch poochna hai...</p>
+
+<button class="btn" onclick="nextScreen('screen2')">
+YES
+</button>
+
+<button class="btn"
+onclick="alert('Single hi rahna h kya hamesha 😒😒')">
+NO
+</button>
+
+</div>
+
+
+<!-- Screen 2 -->
+
+<div id="screen2" class="screen">
+
+<img src="gif2.gif" class="gif">
+
+<h1>Ready? 💕</h1>
+
+<p>Sabse important question...</p>
+
+<button class="btn"
+onclick="nextScreen('screen3')">
+
+Yes 😍
+
+</button>
+
+</div>
+
+
+<!-- Screen 3 -->
+
+<div id="screen3" class="screen">
+
+<h1>Will you be my Valentine? ❤️</h1>
+
+<button class="btn"
+onclick="nextScreen('screen4')">
+
+YES ❤️
+
+</button>
+
+<button class="btn"
+onclick="alert('Ab YES hi option hai 😄')">
+
+NO
+
+</button>
+
+</div>
+
+
+<!-- Screen 4 -->
+
+<div id="screen4" class="screen">
+
+<div class="photo-container">
+
+<img src="princy.jpg" class="couple-photo">
+
+<img src="afzal.jpg" class="couple-photo">
+
+</div>
+
+<h1>My Dearest Princy ❤️</h1>
+
+<p>
+
+Tum meri life ki sabse beautiful feeling ho.  
+Tumhari smile meri duniya hai.  
+Main hamesha tumhare saath rehna chahta hoon.
+
+</p>
+
+<h2>
+
+Forever Yours  
+Afzal ❤️
+
+</h2>
+
+</div>
+
+
+<script>
+
+function nextScreen(id){
+
+document.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+document.getElementById("bg-music").play();
+
+}
+
+function toggleMusic(){
+
+let m=document.getElementById("bg-music");
+
+if(m.paused)
+m.play();
+else
+m.pause();
+
+}
+
+
+/* floating hearts */
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.className="heart";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=20+Math.random()*20+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),5000);
+
+},500);
+
+</script>
+
+</body>
+</html>
